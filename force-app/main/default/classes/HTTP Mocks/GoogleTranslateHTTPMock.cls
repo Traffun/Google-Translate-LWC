@@ -1,3 +1,6 @@
+/**
+ * Description: HTTP Mock class used to test Google Translate API Callout Successful Outcome.
+ */
 public with sharing class GoogleTranslateHTTPMock implements HttpCalloutMock{
     public HTTPResponse respond(HTTPRequest req) {
         

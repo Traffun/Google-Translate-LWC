@@ -6,6 +6,13 @@
  */
 public with sharing class GoogleTranslateComponentController {
     
+    /**
+     * Description: Method takes input from Component then passes it to Google Translate Helper to get Translation to retun.
+     * 
+     * @param textToBeTranslated - Text that needs translated.
+     * @param sourceLang - Source Language of given text.
+     * @param targetLang - Target Language of translated text.
+     */
     @AuraEnabled
     public static string translateText(String textToBeTranslated,String sourceLang, String targetLang){
         try {

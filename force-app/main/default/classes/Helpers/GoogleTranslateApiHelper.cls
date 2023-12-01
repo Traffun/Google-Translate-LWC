@@ -1,5 +1,12 @@
 public with sharing class GoogleTranslateApiHelper {
     
+    /**
+     * Description: Method performs a HTTP Callout to the Rapid API Host Endpoint for the Google Translate API.
+     * 
+     * @param text - Text that will be translated.
+     * @param source - Source language for given text.
+     * @param target - Target language for translated text.
+     */
     public static String getTranslatedText(String text,String source,String target){
         API_Endpoint__mdt endpoint = [SELECT Auth_Token__c, Host_URL__c, API_Endpoint__c FROM API_Endpoint__mdt WHERE MasterLabel = 'Google Translate' WITH SECURITY_ENFORCED LIMIT 1]; 
         HttpRequest req = new HttpRequest();
