@@ -4,8 +4,8 @@
             <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
         </template>
         <lightning-input name="text" label="Text to Translate" value={textToTranslate}></lightning-input>
-        <lightning-combobox name="source" label="Source Language" value={sourceLang} placeholder="Select Language"></lightning-combobox>
-        <lightning-combobox name="target" label="Translation Language" value={translateLang} placeholder="Select Language"></lightning-combobox>
+        <lightning-combobox name="source" label="Source Language" value={sourceLang} placeholder="Select Language" options={langOptions}></lightning-combobox>
+        <lightning-combobox name="target" label="Translation Language" value={translateLang} placeholder="Select Language" options={langOptions}></lightning-combobox>
         <template lwc:if={translatedText}>
             <p>{translatedText}</p>
         </template>
