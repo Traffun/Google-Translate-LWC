@@ -3,7 +3,7 @@
 //
 
 @IsTest
-public with Sharing class GoogleTranslateObjectWrapper_Test {
+public with Sharing class GoogleTranslateObjectWrapperTest {
 	
     @IsTest
 	public static void testParse() {
