@@ -6,6 +6,8 @@ public with sharing class GoogleTranslateApiHelper {
      * @param text - Text that will be translated.
      * @param source - Source language for given text.
      * @param target - Target language for translated text.
+     * 
+     * @return JSON String from the Rapid API Google Translate endpoint
      */
     public static String getTranslatedText(String text,String source,String target){
         API_Endpoint__mdt endpoint = [SELECT Auth_Token__c, Host_URL__c, API_Endpoint__c FROM API_Endpoint__mdt WHERE MasterLabel = 'Google Translate' WITH SECURITY_ENFORCED LIMIT 1]; 

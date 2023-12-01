@@ -12,6 +12,8 @@ public with sharing class GoogleTranslateComponentController {
      * @param textToBeTranslated - Text that needs translated.
      * @param sourceLang - Source Language of given text.
      * @param targetLang - Target Language of translated text.
+     * 
+     * @return Translated String
      */
     @AuraEnabled
     public static string translateText(String textToBeTranslated,String sourceLang, String targetLang){
