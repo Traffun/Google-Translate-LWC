@@ -18,9 +18,13 @@ public with sharing class GoogleTranslateComponentController {
     @AuraEnabled
     public static string translateText(String textToBeTranslated,String sourceLang, String targetLang){
         try {
+            String textToReturn = '';
             String translatedJSON = GoogleTranslateApiHelper.getTranslatedText(textToBeTranslated,sourceLang,targetLang);
             GoogleTranslateObjectWrapper wrapper = GoogleTranslateObjectWrapper.parse(translatedJSON);
-            return wrapper.data.translations[0].translatedText; 
+            for (GoogleTranslateObjectWrapper.Translations translation : wrapper.data.translations) {
+                textToReturn += translation.translatedText;
+            }
+            return textToReturn; 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
