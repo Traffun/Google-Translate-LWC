@@ -19,7 +19,7 @@ public with sharing class GoogleTranslateApiHelper {
         req.setHeader('X-RapidAPI-Key',endpoint.Auth_Token__c);
         req.setHeader('X-RapidAPI-Host',endpoint.Host_URL__c);
         HTTP http = new HTTP();
-        HTTPResponse res = new http.send(req);
+        HTTPResponse res = http.send(req);
         return res.getBody();
     }
 }

@@ -20,7 +20,7 @@ public with sharing class GoogleTranslateComponentController {
         try {
             String translatedJSON = GoogleTranslateApiHelper.getTranslatedText(textToBeTranslated,sourceLang,targetLang);
             GoogleTranslateObjectWrapper wrapper = GoogleTranslateObjectWrapper.parse(translatedJSON);
-            return wrapper.Translations.translatedText; 
+            return wrapper.data.translations[0].translatedText; 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
