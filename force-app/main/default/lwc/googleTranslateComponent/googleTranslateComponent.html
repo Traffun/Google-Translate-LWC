@@ -1,3 +1,16 @@
 <template>
-    
+    <lightning-card title="Google Translate Component">
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+        </template>
+        <lightning-input name="text" label="Text to Translate" value={textToTranslate}></lightning-input>
+        <lightning-combobox name="source" label="Source Language" value={sourceLang} placeholder="Select Language"></lightning-combobox>
+        <lightning-combobox name="target" label="Translation Language" value={translateLang} placeholder="Select Language"></lightning-combobox>
+        <div slot="footer">
+            <lightning-button-group>
+                <lightning-button label="Clear" onclick={clearValues}></lightning-button>
+                <lightning-button label="Submit" onclick={submitValues}></lightning-button>
+            </lightning-button-group>
+        </div>
+    </lightning-card>
 </template>
