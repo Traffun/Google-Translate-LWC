@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Google Translate</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Endpoint__c</field>
+        <value xsi:type="xsd:string">https://google-translate1.p.rapidapi.com/language/translate/v2</value>
+    </values>
+    <values>
+        <field>Auth_Token__c</field>
+        <value xsi:type="xsd:string">18d2d694e8msh12f438c28f7f2fbp1da</value>
+    </values>
+    <values>
+        <field>Host_URL__c</field>
+        <value xsi:type="xsd:string">google-translate1.p.rapidapi.com</value>
+    </values>
+</CustomMetadata>
