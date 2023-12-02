@@ -1,65 +1,72 @@
 import { LightningElement,api } from 'lwc';
 import translateText from '@salesforce/apex/GoogleTranslateComponentController.translateText';
-import langOptions from './googleTranslateLanguages.json'
+import langOptionsFile from '@salesforce/resourceUrl/GoogleTranslateLanguages';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 export default class GoogleTranslateComponent extends LightningElement {
 
-    _textToTranslate;
-    _sourceLang;
-    _translateLang;
-    _translatedText;
+    textToTranslate;
+    sourceLang;
+    translateLang;
+    translatedText;
     isLoading = false;
-    langOptions = langOptions();
+    isDisabled = true;
+    langOptions = [
+        {
+          "label": "English",
+          "value": "en"
+        },
+        {
+          "label": "Spanish",
+          "value": "es"
+        },
+        {
+          "label": "French",
+          "value": "fr"
+        },
+        {
+          "label": "Arabic",
+          "value": "ar"
+        },
+        {
+          "label": "Japanese",
+          "value": "ja"
+        }];
 
-    @api
-    get textToTranslate(){
-        return this._textToTranslate;
+    setTextToTranslate(event){
+        this.textToTranslate = event.detail.value;
+        this.checkButtonStatus();
     }
 
-    set textToTranslate(value){
-        this._textToTranslate = value;
+    setSourceLang(event){
+        this.sourceLang = event.detail.value;
+        this.checkButtonStatus();
     }
 
-    @api
-    get sourceLang(){
-        return this._sourceLang;
+    setTranslateLang(event){
+        this.translateLang = event.detail.value;
+        this.checkButtonStatus();
+        
     }
 
-    set sourceLang(value){
-        this._sourceLang = value;
+    checkButtonStatus(){
+        if(this.translateLang !== undefined && this.sourceLang !== undefined && this.textToTranslate !== undefined){
+            this.isDisabled = false;
+        }else{
+            this.isDisabled = true;
+        }
     }
 
-    @api
-    get translateLang(){
-        return this._translateLang;
-    }
-
-    set translateLang(value){
-        this._translateLang = value;
-    }
-
-    @api
-    get translatedText(){
-        return this._translateLang;
-    }
-
-    set translatedText(value){
-        this._translatedText = value;
-    }
-
-
-
-    
     submitValues(){
         this.isLoading = true;
         translateText({textToBeTranslated: this.textToTranslate, sourceLang: this.sourceLang, 
             targetLang: this.translateLang}).then((result) => {
                 this.translatedText = result;
                 this.error = undefined;
+                this.isLoading = false;
                 const event = new ShowToastEvent({
                     title: 'Success!',
-                    variant: "successs",
+                    variant: "success",
                     message:
                         "Text translated successfully!",
                 });
@@ -68,6 +75,8 @@ export default class GoogleTranslateComponent extends LightningElement {
             .catch((error)=> {
                 this.error = error;
                 this.translatedText = undefined;
+                this.isLoading = false;
+                console.log("Error: "+error.body.message);
                 const event = new ShowToastEvent({
                     title: 'Error',
                     variant: "error",
@@ -83,6 +92,7 @@ export default class GoogleTranslateComponent extends LightningElement {
         this.sourceLang = undefined;
         this.translateLang = undefined;
         this.translatedText = undefined;
+        this.isDisabled = true;
         const event = new ShowToastEvent({
             title: 'Reset',
             message:

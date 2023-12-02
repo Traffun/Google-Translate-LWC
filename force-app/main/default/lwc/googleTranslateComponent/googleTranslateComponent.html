@@ -3,16 +3,16 @@
         <template lwc:if={isLoading}>
             <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
         </template>
-        <lightning-input name="text" label="Text to Translate" value={textToTranslate}></lightning-input>
-        <lightning-combobox name="source" label="Source Language" value={sourceLang} placeholder="Select Language" options={langOptions}></lightning-combobox>
-        <lightning-combobox name="target" label="Translation Language" value={translateLang} placeholder="Select Language" options={langOptions}></lightning-combobox>
+        <lightning-input name="text" label="Text to Translate" value={textToTranslate} onchange={setTextToTranslate}></lightning-input>
+        <lightning-combobox name="source" label="Source Language" value={sourceLang} placeholder="Select Language" options={langOptions} onchange={setSourceLang}></lightning-combobox>
+        <lightning-combobox name="target" label="Translation Language" value={translateLang} placeholder="Select Language" options={langOptions} onchange={setTranslateLang}></lightning-combobox>
         <template lwc:if={translatedText}>
             <p>{translatedText}</p>
         </template>
         <div slot="footer">
             <lightning-button-group>
                 <lightning-button label="Clear" onclick={clearValues}></lightning-button>
-                <lightning-button label="Submit" onclick={submitValues}></lightning-button>
+                <lightning-button label="Submit" onclick={submitValues} disabled={isDisabled}></lightning-button>
             </lightning-button-group>
         </div>
     </lightning-card>
