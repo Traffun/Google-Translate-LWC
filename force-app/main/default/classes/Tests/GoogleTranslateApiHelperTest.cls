@@ -11,8 +11,8 @@ public with sharing class GoogleTranslateApiHelperTest {
     public static void testGetTranslatedText(){
         Test.setMock(HttpCalloutMock.class, new GoogleTranslateHTTPMock());
         String testJSON = GoogleTranslateApiHelper.getTranslatedText('Hello World!', 'en', 'es');
-        GoogleTranslateObjectWrapper wrapper = GoogleTranslateObjectWrapper.parse(translatedJSON);
-        String testTest =  wrapper.data.translations[0].translatedText;
+        GoogleTranslateObjectWrapper wrapper = GoogleTranslateObjectWrapper.parse(testJSON);
+        String testText =  wrapper.data.translations[0].translatedText;
         System.assertEquals('¡Hola Mundo!', testText, 'Translated test text does not match expected result.');
     }
 }

@@ -1,7 +1,7 @@
 import { LightningElement,api } from 'lwc';
 import translateText from '@salesforce/apex/GoogleTranslateComponentController.translateText';
 import langOptions from './googleTranslateLanguages.json'
-import {ShowTostEvent} from 'lightning/platformShowToastEvent';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 
 export default class GoogleTranslateComponent extends LightningElement {
 
